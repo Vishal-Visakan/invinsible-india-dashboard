@@ -1,4 +1,4 @@
-//--SQL File 1://
+//--SQL Script 1://
 -- 1. Create the database so the server can find it
 CREATE DATABASE IF NOT EXISTS campus_db;
 
@@ -16,14 +16,14 @@ CREATE TABLE IF NOT EXISTS complaints (
     status VARCHAR(20) DEFAULT 'Pending'
 );
 
-//--SQL File 2://
+//--SQL Script 2://
 
 USE campus_db;
 
 ALTER TABLE complaints ADD COLUMN studentName VARCHAR(100) AFTER id;
 ALTER TABLE complaints ADD COLUMN trackingId VARCHAR(20) AFTER studentName;
 
-//--SQL File 3://
+//--SQL Script 3://
 
 USE campus_db;
 
@@ -35,13 +35,13 @@ CREATE TABLE IF NOT EXISTS technicians (
     password VARCHAR(50) NOT NULL
 );
 
-//--SQL File 4://
+//--SQL Script 4://
 
 USE campus_db;
 ALTER TABLE complaints ADD COLUMN assignedTo VARCHAR(100) DEFAULT 'Unassigned';
 ALTER TABLE complaints ADD COLUMN workerRemarks TEXT;
 
-//--SQL File 5://
+//--SQL Script 5://
 
 USE campus_db;
 ALTER TABLE complaints ADD COLUMN latitude DECIMAL(10, 8);
@@ -50,7 +50,7 @@ ALTER TABLE complaints ADD COLUMN upvotes INT DEFAULT 0;
 ALTER TABLE complaints ADD COLUMN feedbackRating INT;
 ALTER TABLE complaints ADD COLUMN feedbackComment TEXT;
 
-//--SQL File 6://
+//--SQL Script 6://
 
 USE campus_db;
 
@@ -61,7 +61,7 @@ ALTER TABLE complaints ADD COLUMN feedbackComment TEXT;
 -- This command will show you the "Proof" that they exist
 DESCRIBE complaints;
 
-//--SQL File 7://
+//--SQL Script 7://
 
 SELECT trackingId, status, feedbackRating, feedbackComment 
 FROM complaints 
