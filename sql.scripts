@@ -1,0 +1,68 @@
+//--SQL File 1://
+-- 1. Create the database so the server can find it
+CREATE DATABASE IF NOT EXISTS campus_db;
+
+-- 2. Tell Workbench we want to put our table inside this specific database
+USE campus_db;
+
+-- 3. Build the table with the exact columns our Node.js server expects
+
+CREATE TABLE IF NOT EXISTS complaints (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    regNumber VARCHAR(50) NOT NULL,
+    category VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    images TEXT,
+    status VARCHAR(20) DEFAULT 'Pending'
+);
+
+//--SQL File 2://
+
+USE campus_db;
+
+ALTER TABLE complaints ADD COLUMN studentName VARCHAR(100) AFTER id;
+ALTER TABLE complaints ADD COLUMN trackingId VARCHAR(20) AFTER studentName;
+
+//--SQL File 3://
+
+USE campus_db;
+
+CREATE TABLE IF NOT EXISTS technicians (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    department VARCHAR(100) NOT NULL,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(50) NOT NULL
+);
+
+//--SQL File 4://
+
+USE campus_db;
+ALTER TABLE complaints ADD COLUMN assignedTo VARCHAR(100) DEFAULT 'Unassigned';
+ALTER TABLE complaints ADD COLUMN workerRemarks TEXT;
+
+//--SQL File 5://
+
+USE campus_db;
+ALTER TABLE complaints ADD COLUMN latitude DECIMAL(10, 8);
+ALTER TABLE complaints ADD COLUMN longitude DECIMAL(11, 8);
+ALTER TABLE complaints ADD COLUMN upvotes INT DEFAULT 0;
+ALTER TABLE complaints ADD COLUMN feedbackRating INT;
+ALTER TABLE complaints ADD COLUMN feedbackComment TEXT;
+
+//--SQL File 6://
+
+USE campus_db;
+
+-- Run these one at a time to ensure they all work
+ALTER TABLE complaints ADD COLUMN feedbackRating INT;
+ALTER TABLE complaints ADD COLUMN feedbackComment TEXT;
+
+-- This command will show you the "Proof" that they exist
+DESCRIBE complaints;
+
+//--SQL File 7://
+
+SELECT trackingId, status, feedbackRating, feedbackComment 
+FROM complaints 
+WHERE status = 'Resolved';
