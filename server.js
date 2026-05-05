@@ -169,7 +169,6 @@ app.post('/api/add-technician', (req, res) => {
 });
 
 // WORKER LOGIN
-// WORKER LOGIN
 app.post('/api/worker-login', (req, res) => {
     const { username, password } = req.body;
     const sql = "SELECT * FROM technicians WHERE username = ? AND password = ?";
@@ -206,22 +205,6 @@ app.post('/api/worker-tasks', (req, res) => {
         res.json(results);
     });
 });
-// ==========================================
-// ⚙️ MODIFY & DELETE TECHNICIANS
-// ==========================================
-// ==========================================
-// ⚙️ MODIFY & DELETE TECHNICIANS
-// ==========================================
-
-// Route to handle Deleting a technician
-// ==========================================
-// ⚙️ MODIFY & DELETE TECHNICIANS
-// ==========================================
-
-// Route to handle Deleting a technician
-// ==========================================
-// ⚙️ MODIFY & DELETE TECHNICIANS
-// ==========================================
 
 // Route to handle Deleting a technician
 app.post('/api/delete-technician', (req, res) => {
