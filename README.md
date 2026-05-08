@@ -1,4 +1,4 @@
-# invinsible-india-dashboard
+# invisible-india-dashboard
 "Campus complaint management system."
 
 🏛️ Invinsible India: Civic Issue Reporting Dashboard
